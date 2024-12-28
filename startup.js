@@ -1,12 +1,12 @@
 
 
 var s1 = document.createElement('script');
-s1.setAttribute('src', window.root+"lib/vue.min.js");
+s1.setAttribute('src', window.root+"/lib/vue.min.js");
 
 document.head.appendChild(s1);
 
 s1 = document.createElement('script');
-s1.setAttribute('src', window.root+"lib/httpVueLoader.js");
+s1.setAttribute('src', window.root+"/lib/httpVueLoader.js");
 document.head.appendChild(s1);
 
 //Root styles - prevent scrollbar in body, consistent default font
@@ -17,7 +17,7 @@ css.appendChild(document.createTextNode(styles));
 document.head.appendChild(css);
 
 window.onload = ()=>{
-    
+    	
     var appdiv = document.createElement('div');
     appdiv.setAttribute('id',"app");
     appdiv.id = 'app';
@@ -26,22 +26,24 @@ window.onload = ()=>{
     let comp = document.createElement('my-component');
     appdiv.appendChild(comp);
     let unique = '?rand='+Math.random();
+	
+	window.device = location.protocol + '//' + location.host;
     
     window.components = [
-        { name:'device', path: window.root+'vue/device.vue'+unique },
-        { name:'ota', path: window.root+'vue/ota.vue'+unique },
-        { name:'filesystem', path: window.root+'vue/filesystem.vue'+unique },
-        { name:'info', path: window.root+'vue/info.vue'+unique },
-        { name:'flash', path: window.root+'vue/flash.vue'+unique },
-        { name:'control', path: window.root+'vue/control.vue'+unique },
-        { name:'tools', path: window.root+'vue/tools.vue'+unique },
-        { name:'import', path: window.root+'vue/import.vue'+unique },
-        { name:'logs', path: window.root+'vue/logs.vue'+unique },
-        { name:'gpioDoctor', path: window.root+'vue/gpioDoctor.vue'+unique },
-        { name:'myComponent', path: window.root+'vue/myComponent.vue'+unique },
+        { name:'device', path: window.root+'/vue/device.vue'+unique },
+        { name:'ota', path: window.root+'/vue/ota.vue'+unique },
+        { name:'filesystem', path: window.root+'/vue/filesystem.vue'+unique },
+        { name:'info', path: window.root+'/vue/info.vue'+unique },
+        { name:'flash', path: window.root+'/vue/flash.vue'+unique },
+        { name:'control', path: window.root+'/vue/control.vue'+unique },
+        { name:'tools', path: window.root+'/vue/tools.vue'+unique },
+        { name:'import', path: window.root+'/vue/import.vue'+unique },
+        { name:'logs', path: window.root+'/vue/logs.vue'+unique },
+        { name:'gpioDoctor', path: window.root+'/vue/gpioDoctor.vue'+unique },
+        { name:'myComponent', path: window.root+'/vue/myComponent.vue'+unique },
     ];
-
-    let numcomponents = 0;
+	
+	let numcomponents = 0;
     
     let addComponent = ()=>{
         let component = httpVueLoader(window.components[numcomponents].path);
